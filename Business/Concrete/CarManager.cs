@@ -1,12 +1,16 @@
 ﻿
 using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using DataAccess.Conctere.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,14 +28,11 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if(car.DailyPrice<0)
-            {
-                // Console.WriteLine("Günlük Fiyatı 0 dan büyük olmalıdır");
-                return new ErrorResult(Messages.CarInvalidDP);
-            }
+
+           // ValidationTool.Validate(new CarValidator(),car);
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);//True değeri
         }
@@ -66,7 +67,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             _carDal.Update(car);

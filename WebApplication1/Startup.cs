@@ -30,8 +30,8 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ICarServices, CarManager>();
-            services.AddSingleton<ICarDal, EfCarDal>();
+           // services.AddSingleton<ICarServices, CarManager>();
+            //services.AddSingleton<ICarDal, EfCarDal>();
 
             services.AddSingleton<IBrandServices, BrandManager>();
             services.AddSingleton<IBrandDal, EfBrandDal>();
