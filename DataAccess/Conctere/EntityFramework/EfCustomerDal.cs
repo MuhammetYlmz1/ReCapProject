@@ -9,5 +9,6 @@ namespace DataAccess.Conctere.EntityFramework
 {
    public class EfCustomerDal:EfEntityRepositoryBase<Customer,MyDataBaseContext>,ICustomerDal
     {
+
     }
 }
