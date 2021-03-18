@@ -1,4 +1,4 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -10,10 +10,10 @@ namespace Business.ValidationRules.FluentValidation
     {
         public UserValidator()
         {
-            RuleFor(u => u.Id).NotEmpty();
-            RuleFor(u => u.FirsName).NotEmpty().WithMessage("Lütfen İsminizi giriniz");
+            //RuleFor(u => u.Id).NotEmpty();
+            RuleFor(u => u.FirstName).NotEmpty().WithMessage("Lütfen İsminizi giriniz");
             RuleFor(u => u.LastName).NotEmpty().WithMessage("Lütfen Soyisminizi giriniz");
-            RuleFor(u => u.Password).NotEmpty().WithMessage("Parola kısmını boş geçemezsiniz");
+           
             
         }
     }

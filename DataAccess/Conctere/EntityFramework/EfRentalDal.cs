@@ -26,7 +26,7 @@ namespace DataAccess.Conctere.EntityFramework
                              select new RentalDetailDto
                              {
                                  Id = rental.Id,
-                                 UserFirstName = user.FirsName,
+                                 UserFirstName = user.FirstName,
                                  UserLastName = user.LastName,
                                  CompanyName = customer.CompanyName,
                                  ColorName = color.Name,

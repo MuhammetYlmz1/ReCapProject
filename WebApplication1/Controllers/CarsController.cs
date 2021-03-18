@@ -93,5 +93,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+        [HttpPost("getbyıd")]
+        public IActionResult GetById(int id)
+        {
+            var result = _carServices.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }
